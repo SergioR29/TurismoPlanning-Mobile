@@ -99,6 +99,11 @@ public class ActualidadFragment extends Fragment {
         // Obtener el argumento de la ciudad pasada desde SitiosFragment
         if(getArguments() != null) {
             ciudadSeleccionada = getArguments().getString("cityName"); // Obtener el argumento
+
+            assert ciudadSeleccionada != null;
+            if(ciudadSeleccionada.equals("Guadalajara")) {
+                ciudadSeleccionada = "Guadalajara, Castilla-La Mancha, España";
+            }
         }
 
         // runOnFirstFix se mantiene, PERO solo se ejecutará si no se recibió un argumento de ciudad.
