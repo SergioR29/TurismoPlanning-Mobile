@@ -188,8 +188,8 @@ public class PlanificarFragment extends Fragment {
 
                 TimePickerDialog hora = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
-                    public void onTimeSet (TimePicker view, int hourofDay, int minute) {
-                        HI.setText(hourofDay + ":" + minute);
+                    public void onTimeSet(TimePicker view, int hourofDay, int minute) {
+                        HI.setText(hourofDay + ":" + (minute >= 10 ? minute : "0" + minute));
                     }
                 }, hour, minute, true);
 
@@ -205,8 +205,8 @@ public class PlanificarFragment extends Fragment {
 
                 TimePickerDialog hora = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
-                    public void onTimeSet (TimePicker view, int hourofDay, int minute) {
-                        HF.setText(hourofDay + ":" + minute);
+                    public void onTimeSet(TimePicker view, int hourofDay, int minute) {
+                        HF.setText(hourofDay + ":" + (minute >= 10 ? minute : "0" + minute));
                     }
                 }, hour, minute, true);
 
