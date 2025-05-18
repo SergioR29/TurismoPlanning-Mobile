@@ -36,8 +36,8 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
         setHasOptionsMenu(true);
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        /*final TextView textView = binding.textHome;
+        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);*/
         return root;
     }
 
@@ -66,7 +66,23 @@ public class HomeFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.action_settings) {
+        if(id == R.id.ayudaMain) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setTitle("Ayuda");
+            builder.setMessage("Bienvenido a tu mejor organizador diario y guía turístico, para empezar haz clic a las 3 barras de la esquina superior-izquierda para ver todas las opciones disponibles de uso.\n\nPulsa al icono de 3 puntos situado en la esquina superior derecha para ver información adicional de la aplicación.\n\nPulsa al botón de la esquina inferior derecha para volver al inicio de esta genial app.");
+            builder.setIcon(R.drawable.ic_ayuda);
+
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+        } else if(id == R.id.action_settings) {
             AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.elementosGenerales);
             builder.setTitle("Ajustes");
             builder.setIcon(R.drawable.ajustes);
