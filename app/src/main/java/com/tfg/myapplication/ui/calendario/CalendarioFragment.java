@@ -21,6 +21,7 @@ import androidx.navigation.*;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ak.*;
 import com.tfg.myapplication.GestorBD;
 import com.tfg.myapplication.R;
 import com.tfg.myapplication.databinding.FragmentCalendarioBinding;
@@ -30,13 +31,15 @@ import com.tfg.myapplication.utilidades.ImageUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class CalendarioFragment extends Fragment implements EventoAdapter.OnItemClickListener {
     private FragmentCalendarioBinding binding;
 
     //Elementos UI
-    private CalendarView calendario;
+    private KalendarView calendario;
     private RecyclerView listadoEventos;
 
     //BD
@@ -81,12 +84,14 @@ public class CalendarioFragment extends Fragment implements EventoAdapter.OnItem
         cargarEventos_deHoy();
 
         //Acciones
-        calendario.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        calendario.setDateSelector(new KalendarView.DateSelector() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                String fechaSeleccionada = dayOfMonth + "/" + (month + 1) + "/" + year;
-                FSel = fechaSeleccionada;
+            public void onDateClicked(Date selectedDate) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(selectedDate);
 
+                String fechaSeleccionada = calendar.get(Calendar.DAY_OF_MONTH) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.YEAR);
+                FSel = fechaSeleccionada;
                 cargarEventos_dia(fechaSeleccionada);
             }
         });
