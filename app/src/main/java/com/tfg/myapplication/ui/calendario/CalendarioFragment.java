@@ -16,7 +16,6 @@ import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.*;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -125,8 +124,6 @@ public class CalendarioFragment extends Fragment implements EventoAdapter.OnItem
             Log.e("Error", "Error al obtener columna de cursor", ex);
             Toast.makeText(getContext(), "Error al procesar datos de eventos.", Toast.LENGTH_SHORT).show();
         } finally {
-            // ** CORRECCIÓN: Actualizar el adapter existente con la nueva lista **
-            // Esto notifica al RecyclerView que los datos han cambiado y debe refrescarse
             eventoAdapter.setEventos(listaDeEventos);
         }
     }
@@ -183,8 +180,6 @@ public class CalendarioFragment extends Fragment implements EventoAdapter.OnItem
             Toast.makeText(getContext(), "Error inesperado al cargar eventos.", Toast.LENGTH_SHORT).show();
         }
         finally {
-            // ** CORRECCIÓN: Actualizar el adapter existente con la nueva lista **
-            // Esto notifica al RecyclerView que los datos han cambiado y debe refrescarse
             eventoAdapter.setEventos(listaDeEventos);
         }
     }
@@ -205,7 +200,7 @@ public class CalendarioFragment extends Fragment implements EventoAdapter.OnItem
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.action_ayudaC) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
             builder.setTitle("Ayuda");
             builder.setMessage("Este calendario ha sido diseñado para poder ver una lista de eventos de un día seleccionado en el calendario.\n\nAl pulsar a un evento se verán sus datos completos, y también se pueden editar o eliminar directamente el evento.");
             builder.setIcon(R.drawable.ic_ayuda);
