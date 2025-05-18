@@ -3,6 +3,7 @@ package com.tfg.myapplication.ui.calendario;
 import android.content.DialogInterface;
 import android.database.*;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +30,9 @@ import com.tfg.myapplication.modelos.Evento;
 import com.tfg.myapplication.modelos.EventoAdapter;
 import com.tfg.myapplication.utilidades.ImageUtils;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -81,7 +84,9 @@ public class CalendarioFragment extends Fragment implements EventoAdapter.OnItem
         }
 
         //Configuraciones iniciales
+        calendario.setInitialSelectedDate(Date.from(Instant.now()));
         cargarEventos_deHoy();
+        detectarEventos_Mes();
 
         //Acciones
         calendario.setDateSelector(new KalendarView.DateSelector() {
@@ -95,8 +100,54 @@ public class CalendarioFragment extends Fragment implements EventoAdapter.OnItem
                 cargarEventos_dia(fechaSeleccionada);
             }
         });
+        calendario.setMonthChanger(new KalendarView.MonthChanger() {
+            @Override
+            public void onMonthChanged(Date changedMonth) {
+                detectarEventos_Mes();
+            }
+        });
 
         return root;
+    }
+
+    private void detectarEventos_Mes() {
+        //Método que detecta los eventos del mes, coloreando así los días que los tienen
+        try {
+            if(DB == null || !DB.isOpen()) {
+                Log.e("Error", "Se intentaron detectar los eventos del mes cuando no había conexión a la BD");
+                return;
+            }
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(calendario.getShowingMonth());
+            String[] args = new String[]{String.valueOf(calendar.get(Calendar.MONTH) + 1)};
+
+            Cursor miCursor = DB.rawQuery("SELECT t.Plazo_Fecha, t.Categoria as cat, c.Color FROM Tareas t, Categorias c WHERE c.ID = cat AND CAST(SUBSTR(t.Plazo_Fecha, INSTR(t.Plazo_Fecha, '/') + 1, INSTR(SUBSTR(t.Plazo_Fecha, INSTR(t.Plazo_Fecha, '/') + 1), '/') - 1) AS INTEGER) = ?", args);
+            if(miCursor.moveToFirst()) {
+                List<ColoredDate> coloredDates = new ArrayList<>();
+                do {
+                    String plazoFecha = miCursor.getString(0);
+                    LocalDate fechaFormateada = LocalDate.parse(plazoFecha, DateTimeFormatter.ofPattern("d/M/yyyy"));
+
+                    Calendar calendar1 = Calendar.getInstance();
+                    calendar1.set(fechaFormateada.getYear(), fechaFormateada.getMonthValue() - 1, fechaFormateada.getDayOfMonth());
+                    Date fecha = calendar1.getTime();
+
+                    String colorStr = miCursor.getString(2);
+                    coloredDates.add(new ColoredDate(fecha, Color.parseColor(colorStr)));
+
+                } while(miCursor.moveToNext());
+                miCursor.close();
+
+                if(calendario != null) {
+                    calendario.setColoredDates(coloredDates);
+                    calendario.invalidate();
+                }
+            } else {
+                Log.i("Eventos", "Eventos no encontrados");
+            }
+        } catch (Exception e) {
+            Log.e("Error", "Error al detectar los eventos del mes");
+        }
     }
 
     private void cargarEventos_dia(String fechaSeleccionada) {
@@ -154,8 +205,12 @@ public class CalendarioFragment extends Fragment implements EventoAdapter.OnItem
 
     private void cargarEventos_deHoy() {
         //Método que carga los eventos de la fecha de hoy automáticamente
-        String fechaSeleccionada = LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear();
-        Log.i("Fecha", fechaSeleccionada);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(calendario.getSelectedDate());
+
+        String fechaSeleccionada = calendar.get(Calendar.DAY_OF_MONTH) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.YEAR);
+        Log.i("Fecha de hoy", fechaSeleccionada);
+
         try {
             if(DB == null) {
                 Log.e("Error", "Error: Se intentó cargar los eventos de una fecha cuando la BD no estaba conectada");

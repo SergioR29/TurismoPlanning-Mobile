@@ -137,8 +137,8 @@ public class EventosFragment extends Fragment implements EventoAdapter.OnItemCli
                 eventoAdapter.setEventos(eventos);
                 return;
             }
-            String[] args = new String[]{String.valueOf(IDcatSel)};
-            Cursor filas = DB.rawQuery("SELECT t.Titulo, t.Icono, t.Plazo_Fecha, c.Color, t.Descripcion FROM Tareas t, Categorias c WHERE c.ID = ?", args);
+            String[] args = new String[]{String.valueOf(IDcatSel), String.valueOf(IDcatSel)};
+            Cursor filas = DB.rawQuery("SELECT t.Titulo, t.Icono, t.Plazo_Fecha, c.Color, t.Descripcion FROM Tareas t, Categorias c WHERE c.ID = ? AND t.Categoria = ?", args);
             if(filas.moveToFirst()) {
                 do {
                     String titulo = filas.getString(0);
