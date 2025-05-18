@@ -62,4 +62,7 @@ dependencies {
     //iText (PDF)
     implementation(libs.itext7.core)
     implementation(libs.html2pdf)
+
+    //Calendario
+    implementation(libs.kalendarview)
 }
