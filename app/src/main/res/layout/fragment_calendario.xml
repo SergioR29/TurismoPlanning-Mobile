@@ -10,7 +10,7 @@
     <com.ak.KalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="370dp"
+        android:layout_height="314dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         app:calendarBackground="?attr/colorOnPrimary"
@@ -31,7 +31,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewEventos"
         android:layout_width="0dp"
-        android:layout_height="320dp"
+        android:layout_height="370dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
