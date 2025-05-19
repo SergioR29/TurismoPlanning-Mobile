@@ -148,7 +148,7 @@ public class EventosFragment extends Fragment implements EventoAdapter.OnItemCli
                     String fechaI = filas.getString(4);
 
                     eventos.add(new Evento(titulo, FF, icono, color));
-                    String desc = fechaI != null ? (fechaI + " hasta el " + FF) : FF;
+                    String desc = !fechaI.isEmpty() ? (fechaI + " hasta el " + FF) : FF;
 
                     String iconoB64 = DataUtils.byteArrayToBase64(icono);
                     infoHTML += "<table id=\"contenedor\"><tr><td><img id=\"ic_Tarea\" src=\"" + "data:image/png;base64," + iconoB64 + "\"/></td></tr><tr><td id=\"titulo\"><strong>" + titulo + "</strong></td></tr><tr><td id=\"desc\">" + desc + "</td></tr></table>";
