@@ -138,16 +138,17 @@ public class EventosFragment extends Fragment implements EventoAdapter.OnItemCli
                 return;
             }
             String[] args = new String[]{String.valueOf(IDcatSel), String.valueOf(IDcatSel)};
-            Cursor filas = DB.rawQuery("SELECT t.Titulo, t.Icono, t.Plazo_Fecha, c.Color, t.Descripcion FROM Tareas t, Categorias c WHERE c.ID = ? AND t.Categoria = ?", args);
+            Cursor filas = DB.rawQuery("SELECT t.Titulo, t.Icono, t.Plazo_Fecha, c.Color, t.Fecha_Inicio FROM Tareas t, Categorias c WHERE c.ID = ? AND t.Categoria = ?", args);
             if(filas.moveToFirst()) {
                 do {
                     String titulo = filas.getString(0);
                     byte[] icono = filas.getBlob(1);
                     String FF = filas.getString(2);
                     String color = filas.getString(3);
-                    String desc = filas.getString(4);
+                    String fechaI = filas.getString(4);
 
                     eventos.add(new Evento(titulo, FF, icono, color));
+                    String desc = fechaI != null ? (fechaI + " hasta el " + FF) : FF;
 
                     String iconoB64 = DataUtils.byteArrayToBase64(icono);
                     infoHTML += "<table id=\"contenedor\"><tr><td><img id=\"ic_Tarea\" src=\"" + "data:image/png;base64," + iconoB64 + "\"/></td></tr><tr><td id=\"titulo\"><strong>" + titulo + "</strong></td></tr><tr><td id=\"desc\">" + desc + "</td></tr></table>";
