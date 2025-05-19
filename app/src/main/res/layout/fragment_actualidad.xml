@@ -7,53 +7,28 @@
     android:background="?attr/colorOnPrimary"
     tools:context=".ui.actualidad.ActualidadFragment">
 
-    <TableLayout
-        android:id="@+id/contenedorUbic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapa"
+        android:layout_width="370dp"
+        android:layout_height="330dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TableRow>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/ubicaci_n"
-                android:textColor="?attr/colorOnSurface"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="5dp"/>
-        </TableRow>
-        <TableRow>
-            <org.osmdroid.views.MapView
-                android:id="@+id/mapa"
-                android:layout_width="350dp"
-                android:layout_height="300dp"/>
-        </TableRow>
-    </TableLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.058" />
 
     <TableLayout
+        android:id="@+id/clima"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contenedorUbic"
+        app:layout_constraintTop_toBottomOf="@id/mapa"
         tools:translationY="-10dp">
 
-        <TableRow>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="5dp"
-                android:text="@string/clima"
-                android:textColor="?attr/colorOnSurface"
-                android:textSize="40sp"
-                android:textStyle="bold" />
-        </TableRow>
         <TableRow>
             <GridLayout
                 android:id="@+id/gridLayout_clima"
