@@ -444,6 +444,9 @@ public class CategoriasFragment extends Fragment {
                                     Toast.makeText(getContext(), "Categoría " + nameCatSel + " modificada", Toast.LENGTH_LONG).show();
                                     listaCategorias.setAdapter(null);
 
+                                    infoHTML = "";
+                                    infoPDF = "";
+
                                     cargarCategorias();
                                     cargarListadoCategorias();
 
@@ -533,6 +536,7 @@ public class CategoriasFragment extends Fragment {
                                 if(eventosEliminados > 0) {
                                     Toast.makeText(getContext(), "Eventos de la categoría " + nameCatSel + " eliminados", Toast.LENGTH_LONG).show();
                                     Log.i("Eliminación de categoría", "Eventos de la categoría " + nameCatSel + " eliminados");
+
                                 } else {
                                     Log.i("Eliminación de categoría", "La categoría " + nameCatSel + " no tenía eventos asociados");
                                 }
@@ -540,11 +544,18 @@ public class CategoriasFragment extends Fragment {
                                 colorSel = "";
                                 nameCatSel = "";
                                 IDcatSel = 0;
+
+                                infoHTML = "";
+                                infoPDF = "";
+
                                 cargarCategorias();
                                 cargarListadoCategorias();
 
                             } else if(eliminada > 1) {
                                 Log.e("Error", "Se han eliminado más categorías de las que se debería");
+                                infoHTML = "";
+                                infoPDF = "";
+
                                 cargarCategorias();
                                 cargarListadoCategorias();
                             }
