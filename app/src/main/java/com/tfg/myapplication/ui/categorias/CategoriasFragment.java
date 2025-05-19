@@ -70,8 +70,8 @@ public class CategoriasFragment extends Fragment {
     String plantillaHTML = "<!DOCTYPE html><html><head><style>#contenedor{display: flex;align-items: center;}div{margin-bottom: 20px;}#color{width: 40px;height: 40px;border:5px solid black;margin-right: 10px;min-width: 40px;}#prioridad{font-family: 'Segoe UI';font-size: 27px;font-style: normal;position:relative;top: -10px;margin-right: 10px;}#nombre{font-family: 'Segoe UI';font-size: 22px;font-style: normal;vertical-align: center;position: relative;top: -10px;flex-grow: 1}</style></head><body>";
     String plantillaPDF = "<!DOCTYPE html><html><head><style>#contenedor{display: flex;align-items: center;}div{margin-bottom: 20px;}#color{width: 40px;height: 40px;border:5px solid black;margin-right: 10px;min-width: 40px;}#prioridad{font-family: 'Segoe UI';font-size: 27px;font-style: normal;position:relative;top: -10px;margin-right: 10px;}#nombre{font-family: 'Segoe UI';font-size: 22px;font-style: normal;vertical-align: center;position: relative;top: -10px;flex-grow: 1}</style></head><body>";
 
-    String infoHTML;
-    String infoPDF;
+    String infoHTML = "";
+    String infoPDF = "";
     String finalPL = "</body></html>";
 
     //Documentos finales
