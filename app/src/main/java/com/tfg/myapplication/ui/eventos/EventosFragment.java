@@ -40,7 +40,6 @@ import com.tfg.myapplication.utilidades.ImageUtils;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -226,7 +225,7 @@ public class EventosFragment extends Fragment implements EventoAdapter.OnItemCli
                 Object item = adapter.getItem(i);
 
                 // Convertir el elemento a String y comparar con el texto buscado
-                // Puedes necesitar ajustar la conversión a String dependiendo del tipo de objeto en tu adaptador
+                // Puedo necesitar ajustar la conversión a String dependiendo del tipo de objeto en mi adaptador
                 if (item != null && item.toString().equals(text)) {
                     // Si el texto coincide, devolver la posición actual
                     return i;
@@ -260,7 +259,7 @@ public class EventosFragment extends Fragment implements EventoAdapter.OnItemCli
                 } while(filas.moveToNext());
                 filas.close();
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.custom_spinner_item, listado);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), R.layout.custom_spinner_item, listado);
                 adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
                 listaCategorias.setAdapter(adapter);
                 listaCategorias.setSelection(0);
@@ -297,7 +296,7 @@ public class EventosFragment extends Fragment implements EventoAdapter.OnItemCli
 
             OutputStream outputStream = null;
             try {
-                outputStream = getContext().getContentResolver().openOutputStream(fileUri);
+                outputStream = requireContext().getContentResolver().openOutputStream(fileUri);
 
                 if (outputStream != null) {
                     if ("HTML".equals(fileType)) {
@@ -318,7 +317,6 @@ public class EventosFragment extends Fragment implements EventoAdapter.OnItemCli
                             Document document = new Document(pdfDocument); // iText Document class
 
                             // Usar HtmlConverter para convertir la cadena HTML a PDF
-                            // Asegúrate de que las dependencias de iText y pdfhtml están correctas
                             HtmlConverter.convertToPdf(PDF, pdfDocument.getWriter()); // Convertir directamente a PdfDocument
 
                             // No es necesario cerrar el 'document' o 'pdfDocument' explícitamente

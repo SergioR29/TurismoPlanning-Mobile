@@ -10,7 +10,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -120,7 +119,7 @@ public class HomeFragment extends Fragment {
             dialog.show();
 
         } else if(id == R.id.action_info) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
             builder.setTitle("Más información");
             builder.setIcon(R.drawable.informacion);
             builder.setMessage("Esta aplicación ha sido diseñada para ayudar al usuario a organizarse en su día a día. También se le muestran unos sitios turísticos de interés al usuario además de poder orientarse mediante un mapa y tomar apuntes.\n\nAutor: Sergio Romero Tejedor\nVersión: 1.0\nFecha de Lanzamiento: 29/05/2025");

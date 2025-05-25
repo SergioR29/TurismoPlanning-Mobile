@@ -407,7 +407,7 @@ public class PlanificarFragment extends Fragment {
                 Object item = adapter.getItem(i);
 
                 // Convertir el elemento a String y comparar con el texto buscado
-                // Puedes necesitar ajustar la conversión a String dependiendo del tipo de objeto en tu adaptador
+                // Puedo necesitar ajustar la conversión a String dependiendo del tipo de objeto en mi adaptador
                 if (item != null && item.toString().equals(text)) {
                     // Si el texto coincide, devolver la posición actual
                     return i;
@@ -518,7 +518,6 @@ public class PlanificarFragment extends Fragment {
                             Document document = new Document(pdfDocument); // iText Document class
 
                             // Usar HtmlConverter para convertir la cadena HTML a PDF
-                            // Asegúrate de que las dependencias de iText y pdfhtml están correctas
                             HtmlConverter.convertToPdf(html, pdfDocument.getWriter()); // Convertir directamente a PdfDocument
 
                             // No es necesario cerrar el 'document' o 'pdfDocument' explícitamente
@@ -821,7 +820,7 @@ public class PlanificarFragment extends Fragment {
                         Toast.makeText(getContext(), "No se pudo abrir el diálogo de exportación a HTML: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                     builder.setTitle("Aviso");
                     builder.setMessage("Faltan valores por rellenar.");
                     builder.setIcon(R.drawable.informacion);
@@ -877,7 +876,7 @@ public class PlanificarFragment extends Fragment {
 
                     assert fechaI != null : "Nulo";
                     if (fechaI.isAfter(fechaF)) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                         builder.setTitle("Aviso");
                         builder.setMessage("La hora de inicio no puede ser más lejana que la hora de finalización del evento.");
                         builder.setIcon(R.drawable.informacion);
@@ -899,7 +898,7 @@ public class PlanificarFragment extends Fragment {
                         assert horaF != null : "Nulo";
 
                         if (horaI.isAfter(horaF)) {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                             builder.setTitle("Aviso");
                             builder.setMessage("La hora de inicio no puede ser más lejana que la hora de finalización del evento.");
                             builder.setIcon(R.drawable.informacion);
@@ -930,7 +929,7 @@ public class PlanificarFragment extends Fragment {
                         Toast.makeText(getContext(), "No se pudo abrir el diálogo de exportación a PDF: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                     builder.setTitle("Aviso");
                     builder.setMessage("Faltan valores por rellenar.");
                     builder.setIcon(R.drawable.informacion);

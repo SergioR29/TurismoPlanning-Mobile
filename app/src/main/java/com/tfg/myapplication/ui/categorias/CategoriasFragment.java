@@ -212,7 +212,7 @@ public class CategoriasFragment extends Fragment {
                 } while(filas.moveToNext());
                 filas.close();
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.custom_spinner_item, listado);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), R.layout.custom_spinner_item, listado);
                 adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
                 listaCategorias.setAdapter(adapter);
                 listaCategorias.setSelection(0);
@@ -249,7 +249,7 @@ public class CategoriasFragment extends Fragment {
 
             OutputStream outputStream = null;
             try {
-                outputStream = getContext().getContentResolver().openOutputStream(fileUri);
+                outputStream = requireContext().getContentResolver().openOutputStream(fileUri);
 
                 if (outputStream != null) {
                     if ("HTML".equals(fileType)) {
@@ -270,7 +270,6 @@ public class CategoriasFragment extends Fragment {
                             Document document = new Document(pdfDocument); // iText Document class
 
                             // Usar HtmlConverter para convertir la cadena HTML a PDF
-                            // Asegúrate de que las dependencias de iText y pdfhtml están correctas
                             HtmlConverter.convertToPdf(PDF, pdfDocument.getWriter()); // Convertir directamente a PdfDocument
 
                             // No es necesario cerrar el 'document' o 'pdfDocument' explícitamente
@@ -336,7 +335,7 @@ public class CategoriasFragment extends Fragment {
                 Object item = adapter.getItem(i);
 
                 // Convertir el elemento a String y comparar con el texto buscado
-                // Puedes necesitar ajustar la conversión a String dependiendo del tipo de objeto en tu adaptador
+                // Puedo necesitar ajustar la conversión a String dependiendo del tipo de objeto en mi adaptador
                 if (item != null && item.toString().equals(text)) {
                     // Si el texto coincide, devolver la posición actual
                     return i;
@@ -482,7 +481,7 @@ public class CategoriasFragment extends Fragment {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             } else if(!listaDeCategorias.isEmpty()) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                 builder.setTitle("Aviso");
                 builder.setIcon(R.drawable.informacion);
                 builder.setMessage("No se ha seleccionado ninguna categoría");
@@ -497,7 +496,7 @@ public class CategoriasFragment extends Fragment {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             } else {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                 builder.setTitle("Aviso");
                 builder.setIcon(R.drawable.informacion);
                 builder.setMessage("No hay categorías creadas");
@@ -517,7 +516,7 @@ public class CategoriasFragment extends Fragment {
             //Comprobar que se haya seleccionado una categoría
             int posCatSel = getSpinnerPositionByText(listaCategorias, nameCatSel);
             if(posCatSel > 0) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                 builder.setTitle("Aviso");
                 builder.setIcon(R.drawable.informacion);
                 builder.setMessage("¿Está seguro de que desea eliminar la categoría " + nameCatSel + "?");
@@ -575,7 +574,7 @@ public class CategoriasFragment extends Fragment {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             } else if(!listaDeCategorias.isEmpty()) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                 builder.setTitle("Aviso");
                 builder.setIcon(R.drawable.informacion);
                 builder.setMessage("No se ha seleccionado ninguna categoría");
@@ -590,7 +589,7 @@ public class CategoriasFragment extends Fragment {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             } else {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                 builder.setTitle("Aviso");
                 builder.setIcon(R.drawable.informacion);
                 builder.setMessage("No hay categorías creadas");
@@ -635,7 +634,7 @@ public class CategoriasFragment extends Fragment {
             }
 
         } else if(id == R.id.action_ayudaCE) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
             builder.setTitle("Ayuda");
             builder.setIcon(R.drawable.ic_ayuda);
             builder.setMessage("Para editar o eliminar una categoría seleccione una del desplegable primero (el que está al lado del texto de \"Categoría\")");

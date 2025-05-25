@@ -9,7 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -86,7 +85,7 @@ public class ImageUtils {
             stream = new ByteArrayOutputStream();
 
             // Comprimir el bitmap a PNG. PNG es sin pérdida y adecuado para iconos.
-            // Si prefieres JPEG (con pérdida, tamaño de archivo más pequeño para fotos), usa Bitmap.CompressFormat.JPEG y ajusta la calidad (ej. 80).
+            // Si se usa JPEG (con pérdida, tamaño de archivo más pequeño para fotos), usar Bitmap.CompressFormat.JPEG y ajustar la calidad (ej. 80).
             boolean compressed = bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream); // Calidad 100 para PNG se ignora
 
             if (compressed) {
@@ -138,7 +137,7 @@ public class ImageUtils {
                 bitmap = Bitmap.createBitmap(
                         drawable.getIntrinsicWidth(),
                         drawable.getIntrinsicHeight(),
-                        Bitmap.Config.ARGB_8888 // O RGB_565 si no necesitas transparencia
+                        Bitmap.Config.ARGB_8888 // O RGB_565 si no necesito transparencia
                 );
                 Canvas canvas = new Canvas(bitmap);
                 drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
@@ -157,7 +156,7 @@ public class ImageUtils {
 
         // 3. Comprimir el Bitmap a un array de bytes
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        // Puedes elegir el formato (PNG, JPEG) y la calidad (para JPEG)
+        // Puedo elegir el formato (PNG, JPEG) y la calidad (para JPEG)
         // PNG es sin pérdida, JPEG permite ajustar la calidad (0-100)
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
         byte[] byteArray = byteArrayOutputStream.toByteArray();
@@ -212,7 +211,7 @@ public class ImageUtils {
         // Paso 2: Convertir el Bitmap a un BitmapDrawable
         Drawable drawable = null;
         try {
-            // Necesitas el contexto para crear un BitmapDrawable
+            // Necesito el contexto para crear un BitmapDrawable
             drawable = new BitmapDrawable(context.getResources(), bitmap);
         } catch (Exception e) {
             Log.e("ImageUtils", "Error al crear BitmapDrawable a partir de Bitmap", e);

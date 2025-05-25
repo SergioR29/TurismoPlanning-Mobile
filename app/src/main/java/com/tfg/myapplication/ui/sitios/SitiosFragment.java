@@ -38,6 +38,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.html2pdf.HtmlConverter;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class SitiosFragment extends Fragment {
     private FragmentSitiosBinding binding;
@@ -273,7 +274,7 @@ public class SitiosFragment extends Fragment {
                     } while (filas.moveToNext());
                     filas.close();
 
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.custom_spinner_item, listado);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), R.layout.custom_spinner_item, listado);
                     adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
                     sitiosSpinner.setAdapter(adapter);
 
@@ -315,7 +316,7 @@ public class SitiosFragment extends Fragment {
                 } while (filas.moveToNext());
                 filas.close();
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.custom_spinner_item, listado);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), R.layout.custom_spinner_item, listado);
                 adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
                 ciudadesSpinner.setAdapter(adapter);
 
@@ -338,7 +339,7 @@ public class SitiosFragment extends Fragment {
         int id = item.getItemId();
         if(id == R.id.action_exportar_html) {
             if(ciudadLabel.getText().equals("Ciudad") || sitioLabel.getText().equals("Sitio")) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                 builder.setTitle("Aviso");
                 builder.setMessage("Ciudad o sitio no seleccionados");
                 builder.setIcon(R.drawable.informacion);
@@ -376,7 +377,7 @@ public class SitiosFragment extends Fragment {
 
         } else if(id == R.id.action_exportar_pdf) {
             if(ciudadLabel.getText().equals("Ciudad") || sitioLabel.getText().equals("Sitio")) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                 builder.setTitle("Aviso");
                 builder.setMessage("Ciudad o sitio no seleccionados");
                 builder.setIcon(R.drawable.informacion);
@@ -415,7 +416,7 @@ public class SitiosFragment extends Fragment {
         } else if(id == R.id.ubiClimaSitio) {
             if(!ciudadLabel.getText().equals("Ciudad")) {
                 try {
-                    NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_main);
+                    NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
                     Bundle bundle = new Bundle();
                     bundle.putString("cityName", (String) ciudadLabel.getText());
                     navController.navigate(R.id.nav_actualidad, bundle);
@@ -424,7 +425,7 @@ public class SitiosFragment extends Fragment {
                     ex.printStackTrace();
                 }
             } else if(ciudadLabel.getText().equals("Ciudad")) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                 builder.setTitle("Aviso");
                 builder.setMessage("Ciudad no seleccionada");
                 builder.setIcon(R.drawable.informacion);
@@ -442,7 +443,7 @@ public class SitiosFragment extends Fragment {
         } else if(id == R.id.planificarVisita) {
             if(!ciudadLabel.getText().equals("Ciudad")) {
                 try {
-                    NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_main);
+                    NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
                     Bundle bundle = new Bundle();
                     bundle.putString("tituloV", "Visita a " + (!sitioLabel.getText().equals("Sitio") ? sitioLabel.getText() : ciudadLabel.getText()));
                     navController.navigate(R.id.nav_planificar, bundle);
@@ -452,7 +453,7 @@ public class SitiosFragment extends Fragment {
                 }
 
             } else if(ciudadLabel.getText().equals("Ciudad")) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                 builder.setTitle("Aviso");
                 builder.setMessage("Ciudad no seleccionada");
                 builder.setIcon(R.drawable.informacion);
@@ -496,13 +497,13 @@ public class SitiosFragment extends Fragment {
 
             OutputStream outputStream = null;
             try {
-                outputStream = getContext().getContentResolver().openOutputStream(fileUri);
+                outputStream = requireContext().getContentResolver().openOutputStream(fileUri);
 
                 if (outputStream != null) {
                     if ("HTML".equals(fileType)) {
                         // --- Escribir el contenido HTML en el flujo de salida ---
                         if (html != null) {
-                            byte[] htmlBytes = html.getBytes("UTF-8");
+                            byte[] htmlBytes = html.getBytes(StandardCharsets.UTF_8);
                             outputStream.write(htmlBytes);
                             Toast.makeText(getContext(), "Archivo HTML exportado exitosamente.", Toast.LENGTH_LONG).show();
                         } else {
@@ -517,7 +518,6 @@ public class SitiosFragment extends Fragment {
                             Document document = new Document(pdfDocument); // iText Document class
 
                             // Usar HtmlConverter para convertir la cadena HTML a PDF
-                            // Asegúrate de que las dependencias de iText y pdfhtml están correctas
                             HtmlConverter.convertToPdf(html, pdfDocument.getWriter()); // Convertir directamente a PdfDocument
 
                             // No es necesario cerrar el 'document' o 'pdfDocument' explícitamente
@@ -589,7 +589,7 @@ public class SitiosFragment extends Fragment {
                 bitmap = Bitmap.createBitmap(
                         drawable.getIntrinsicWidth(),
                         drawable.getIntrinsicHeight(),
-                        Bitmap.Config.ARGB_8888 // O RGB_565 si no necesitas transparencia
+                        Bitmap.Config.ARGB_8888 // O RGB_565 si no necesito transparencia
                 );
                 Canvas canvas = new Canvas(bitmap);
                 drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
@@ -608,7 +608,7 @@ public class SitiosFragment extends Fragment {
 
         // 3. Comprimir el Bitmap a un array de bytes
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        // Puedes elegir el formato (PNG, JPEG) y la calidad (para JPEG)
+        // Puedo elegir el formato (PNG, JPEG) y la calidad (para JPEG)
         // PNG es sin pérdida, JPEG permite ajustar la calidad (0-100)
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
         byte[] byteArray = byteArrayOutputStream.toByteArray();

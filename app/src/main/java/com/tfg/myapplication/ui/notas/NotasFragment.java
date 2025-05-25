@@ -158,7 +158,7 @@ public class NotasFragment extends Fragment {
             }
 
         } else if(id == R.id.action_help) {
-            AlertDialog.Builder builder =new AlertDialog.Builder(getContext());
+            AlertDialog.Builder builder =new AlertDialog.Builder(requireContext());
             builder.setTitle("Ayuda");
             builder.setMessage("Este apartado es un bloc de notas con el que puede tomar apuntes y exportarlo a donde sea (txt, html, pdf).");
             builder.setIcon(R.drawable.ic_ayuda);
@@ -282,7 +282,6 @@ public class NotasFragment extends Fragment {
                             Document document = new Document(pdfDocument); // iText Document class
 
                             // Usar HtmlConverter para convertir la cadena HTML a PDF
-                            // Asegúrate de que las dependencias de iText y pdfhtml están correctas
                             HtmlConverter.convertToPdf(html, pdfDocument.getWriter()); // Convertir directamente a PdfDocument
 
                             // No es necesario cerrar el 'document' o 'pdfDocument' explícitamente

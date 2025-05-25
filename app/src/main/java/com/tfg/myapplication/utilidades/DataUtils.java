@@ -1,4 +1,4 @@
-package com.tfg.myapplication.utilidades; // Puedes ponerlo en una clase de utilidad
+package com.tfg.myapplication.utilidades;
 
 import android.util.Base64; // Importar la clase Base64 de Android
 import android.util.Log; // Importar Log (opcional para depuración)
@@ -21,7 +21,7 @@ public class DataUtils {
         try {
             // Codificar el array de bytes a Base64.
             // Usamos la bandera Base64.DEFAULT para la codificación estándar.
-            // Puedes usar otras banderas como Base64.NO_WRAP si no quieres saltos de línea.
+            // Puedo usar otras banderas como Base64.NO_WRAP si no quiero saltos de línea.
             String base64String = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
             Log.d("DataUtils", "Array de bytes codificado a Base64. Longitud: " + base64String.length());

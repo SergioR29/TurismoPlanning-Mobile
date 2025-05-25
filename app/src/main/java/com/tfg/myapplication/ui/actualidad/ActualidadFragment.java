@@ -62,7 +62,7 @@ public class ActualidadFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // **Configuración de OSMDroid (DEBE IR ANTES DE INFLAR EL MAPVIEW)**
         Configuration.getInstance().load(getContext(), PreferenceManager.getDefaultSharedPreferences(getContext()));
-        Configuration.getInstance().setUserAgentValue(getContext().getPackageName());
+        Configuration.getInstance().setUserAgentValue(requireContext().getPackageName());
 
         // Usando ViewBinding para inflar el layout
         binding = FragmentActualidadBinding.inflate(inflater, container, false);
@@ -81,7 +81,7 @@ public class ActualidadFragment extends Fragment {
         mapView.setMultiTouchControls(true);
 
         // Configurar el MyLocationNewOverlay
-        GpsMyLocationProvider locationProvider = new GpsMyLocationProvider(getContext());
+        GpsMyLocationProvider locationProvider = new GpsMyLocationProvider(requireContext());
         locationOverlay = new MyLocationNewOverlay(locationProvider, mapView);
 
         // Añadir el overlay al mapa
@@ -164,7 +164,7 @@ public class ActualidadFragment extends Fragment {
                 if (weatherResponse != null && weatherResponse.getWeather() != null && weatherResponse.getWeather().length > 0) {
                     // Si hay datos de clima válidos, actualizar la UI
                     ciudadTextView.setText(weatherResponse.getName()); // Nombre de ciudad de la respuesta API
-                    temperaturaTextView.setText(new Double(weatherResponse.getMain().getTemp()).intValue() + "°C");
+                    temperaturaTextView.setText(Double.valueOf(weatherResponse.getMain().getTemp()).intValue() + "°C");
 
                     String iconCode = weatherResponse.getWeather()[0].getIcon();
                     int iconResourceId = mapWeatherIcon(iconCode);
@@ -172,7 +172,7 @@ public class ActualidadFragment extends Fragment {
                     if (iconResourceId != 0) {
                         weatherIconImageView.setImageResource(iconResourceId);
                     } else {
-                        weatherIconImageView.setImageResource(R.drawable.ic_nodisponible); // Tu icono por defecto
+                        weatherIconImageView.setImageResource(R.drawable.ic_nodisponible); // Mi icono por defecto
                     }
 
                     Log.d("WeatherUpdate", "Clima actualizado para: " + weatherResponse.getName()); // Log útil
@@ -196,7 +196,7 @@ public class ActualidadFragment extends Fragment {
             // 1. Obtener clima para la ciudad seleccionada
             actualidadViewModel.fetchWeatherForCity(ciudadSeleccionada);
             // 2. Obtener coordenadas de la ciudad seleccionada y centrar el mapa
-            new GetLocationFromCityTask(getActivity(), mapView).execute(ciudadSeleccionada); // <-- Llamar a la tarea de geocodificación directa
+            new GetLocationFromCityTask(requireActivity(), mapView).execute(ciudadSeleccionada); // <-- Llamar a la tarea de geocodificación directa
 
         } else {
             Log.d("ActualidadFragment", "No se recibió argumento de ciudad. Solicitando ubicación de usuario...");
@@ -239,17 +239,17 @@ public class ActualidadFragment extends Fragment {
     private void requestLocationPermissions() {
         ArrayList<String> permissionsToRequest = new ArrayList<>();
 
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             permissionsToRequest.add(Manifest.permission.ACCESS_FINE_LOCATION);
         }
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION)
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             permissionsToRequest.add(Manifest.permission.ACCESS_COARSE_LOCATION);
         }
 
         if (!permissionsToRequest.isEmpty()) {
-            ActivityCompat.requestPermissions(getActivity(),
+            ActivityCompat.requestPermissions(requireActivity(),
                     permissionsToRequest.toArray(new String[0]),
                     REQUEST_LOCATION_PERMISSION);
         } else {
@@ -286,8 +286,8 @@ public class ActualidadFragment extends Fragment {
                     == PackageManager.PERMISSION_GRANTED) {
                 locationOverlay.enableMyLocation(); // Empieza a rastrear la ubicación
 
-                // Opcional: Si quieres que el mapa se centre y siga al usuario por defecto
-                locationOverlay.enableFollowLocation(); // Habilitar si quieres que el mapa siga al usuario
+                // Opcional: Si quiero que el mapa se centre y siga al usuario por defecto
+                locationOverlay.enableFollowLocation(); // Habilitar si quiero que el mapa siga al usuario
 
             }
         }
@@ -312,126 +312,126 @@ public class ActualidadFragment extends Fragment {
         switch (iconCode) {
             case "01d":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#07acff")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#07acff"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_sunny_day;
             case "01n":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_clear_night; // Noche: fondo azul
             case "02d":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#07acff")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#07acff"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_few_clouds_day;
             case "02n":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_few_clouds_night;
             case "03d":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#07acff")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#07acff"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_scattered_clouds;
             case "03n":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_scattered_clouds;
             case "04d":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#07acff")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#07acff"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_broken_clouds;
             case "04n":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_broken_clouds;
             case "09d":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#07acff")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#07acff"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_shower_rain;
             case "09n":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_shower_rain;
             case "10d":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#07acff")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#07acff"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_rain_day;
             case "10n":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_rain_night;
             case "11d":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#07acff")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#07acff"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_thunderstorm;
             case "11n":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_thunderstorm;
             case "13d":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#07acff")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#07acff"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_snow;
             case "13n":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_snow;
             case "50d":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#07acff")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#07acff"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
                 return R.drawable.ic_mist;
             case "50n":
                 if (layoutClima != null) {
-                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4")); // Día no cambia color
+                    layoutClima.setBackgroundColor(Color.parseColor("#0013b4"));
                     temperaturaTextView.setTextColor(Color.WHITE);
                     ciudadTextView.setTextColor(Color.WHITE);
                 }
