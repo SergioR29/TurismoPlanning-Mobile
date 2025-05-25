@@ -22,7 +22,7 @@ public class Main {
     private int grndLevel; // Presión a nivel del suelo (si está disponible)
 
     // Por defecto, la temperatura viene en Kelvin.
-    // Asegúrate de añadir el parámetro 'units' en la petición API ("metric" para Celsius, "imperial" para Fahrenheit)
+    // Puedo añadir el parámetro 'units' en la petición API ("metric" para Celsius, "imperial" para Fahrenheit)
     // para recibir la temperatura directamente en la unidad deseada.
 
     public double getTemp() {

@@ -28,7 +28,7 @@ public class CategoriaViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 int position = getAdapterPosition();
                 if(position == RecyclerView.NO_POSITION) {
-
+                    //No se ha encontrado el elemento
                 }
             }
         });

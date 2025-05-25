@@ -1,13 +1,10 @@
-package com.tfg.myapplication.modelos; // O el paquete donde guardes tus modelos de datos
+package com.tfg.myapplication.modelos;
 
-// Puedes usar java.util.Date o java.time.LocalDate si necesitas manejar fechas más complejas
 import android.graphics.drawable.Drawable;
-
-import java.util.Date;
 
 public class Evento {
     private String titulo;
-    private String fechaFin; // O String si prefieres guardar la fecha como texto
+    private String fechaFin;
     private byte[] iconoBlob; // <-- Ahora es un byte[] para el icono (Blob)
     private String color;
     private Drawable estilo;
@@ -45,8 +42,6 @@ public class Evento {
     public String getColor() {
         return color;
     }
-
-    // Puedes añadir setters si necesitas modificar los datos después de crear el objeto
 
     // Opcional: toString() para depuración
     @Override

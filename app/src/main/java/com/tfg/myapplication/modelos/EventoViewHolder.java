@@ -1,6 +1,5 @@
 package com.tfg.myapplication.modelos;
 
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,17 +29,15 @@ public class EventoViewHolder extends RecyclerView.ViewHolder {
         fechaFinTextView = itemView.findViewById(R.id.fechaFIN_Evento);
         datosGenerales = itemView.findViewById(R.id.datosGenerales);
 
-        // Puedes establecer listeners aquí si quieres manejar clics en elementos individuales
+        // Puedo establecer listeners aquí si quiero manejar clics en elementos individuales
         itemView.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
                  // Manejar clic en el elemento de la lista
-                 // Puedes obtener la posición con getAdapterPosition()
+                 // Puedo obtener la posición con getAdapterPosition()
                  int position = getAdapterPosition();
                  if (position != RecyclerView.NO_POSITION) {
-                     // Notificar a tu Fragmento/Activity sobre el clic
-                     // (Ver sección de manejo de clics más adelante)
-
+                     // Notificar a mi Fragmento/Activity sobre el clic
                  }
              }
          });

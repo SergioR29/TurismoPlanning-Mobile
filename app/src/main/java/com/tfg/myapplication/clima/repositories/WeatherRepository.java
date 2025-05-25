@@ -1,9 +1,9 @@
-package com.tfg.myapplication.clima.repositories; // Paquete data.repositories
+package com.tfg.myapplication.clima.repositories;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-// Importa las clases del paquete de la API
+// Importar las clases del paquete de la API
 import com.tfg.myapplication.clima.OpenWeatherMapService;
 import com.tfg.myapplication.clima.WeatherResponse;
 
@@ -46,7 +46,7 @@ public class WeatherRepository {
                             data.setValue(response.body());
                         } else {
                             // Si la respuesta no es exitosa (ej: ciudad no encontrada, error de API)
-                            // Puedes loggear el error (response.code(), response.errorBody())
+                            // Puedo loggear el error (response.code(), response.errorBody())
                             data.setValue(null); // Indica a los observadores que hubo un error o no hay datos
                             // Opcional: Usar otro LiveData para mensajes de error
                         }
@@ -88,6 +88,4 @@ public class WeatherRepository {
 
         return data;
     }
-
-    // Puedes añadir otros métodos aquí para obtener pronósticos, etc.
 }
