@@ -570,7 +570,7 @@ public class ActualidadFragment extends Fragment {
                         public void run() {
                             mapView.getController().animateTo(location);
                             mapView.getController().setCenter(location);
-                            mapView.getController().setZoom(15.0); // Ajusta el zoom según necesites
+                            mapView.getController().setZoom(15.0); // Ajusta el zoom según se necesite
                             Log.d("GeocodingTask", "Mapa centrado en la ubicación de la ciudad.");
                         }
                     });
