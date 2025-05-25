@@ -56,7 +56,6 @@ public class ActualidadFragment extends Fragment {
     //Variables auxiliares
     String ciudadSeleccionada; // Usamos un nombre más descriptivo para el argumento
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
