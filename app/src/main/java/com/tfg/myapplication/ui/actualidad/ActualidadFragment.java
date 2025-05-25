@@ -234,7 +234,7 @@ public class ActualidadFragment extends Fragment {
     }
 
 
-    // **Método para solicitar permisos de ubicación (mantenemos el que ya tenías)**
+    // **Método para solicitar permisos de ubicación (mantenemos el que ya tenía)**
     private void requestLocationPermissions() {
         ArrayList<String> permissionsToRequest = new ArrayList<>();
 
