@@ -188,7 +188,7 @@ public class SitiosFragment extends Fragment {
                         desc_CiudadSitio.setText(descC);
                     } else {
                         ciudad_ImgView.setImageBitmap(null);
-                        ciudadLabel.setText("");
+                        ciudadLabel.setText(ciudad);
                     }
 
                 } while(cursor.moveToNext());
@@ -224,7 +224,7 @@ public class SitiosFragment extends Fragment {
 
                     } else {
                         sitio_ImgView.setImageBitmap(null);
-                        sitioLabel.setText("");
+                        sitioLabel.setText(sitio);
                     }
                 } while(cursor.moveToNext());
             } else {
