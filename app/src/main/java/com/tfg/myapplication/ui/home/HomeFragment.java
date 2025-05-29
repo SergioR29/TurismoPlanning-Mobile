@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment {
         if(id == R.id.ayudaMain) {
             AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
             builder.setTitle("Ayuda");
-            builder.setMessage("Bienvenido a tu mejor organizador diario y guía turístico, para empezar haz clic a las 3 barras de la esquina superior-izquierda para ver todas las opciones disponibles de uso.\n\nPulsa al icono de 3 puntos situado en la esquina superior derecha para ver información adicional de la aplicación.\n\nPulsa al botón de la esquina inferior derecha para volver al inicio de esta genial app.");
+            builder.setMessage("Bienvenido a tu mejor organizador diario y guía turístico, para empezar haz clic a las 3 barras de la esquina superior-izquierda para ver todas las opciones disponibles de uso.\n\nPulsa al icono de 3 puntos situado en la esquina superior derecha para ver información adicional de la aplicación y cambiar entre varios temas (claro, oscuro y predeterminado por el sistema).\n\nPulsa al botón de la esquina inferior derecha para volver al inicio de esta genial app.");
             builder.setIcon(R.drawable.ic_ayuda);
 
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
