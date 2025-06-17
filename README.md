@@ -3,7 +3,7 @@ App ideal para turistas y personas que quieran organizar su día a día con exce
 que el usuario desee crear, un calendario con los eventos del día seleccionado del mes y temas para visualizar la aplicación de la forma más cómoda posible (Claro, Oscuro u Predeterminado por el Sistema).
 
 
-Versión de móvil para Android. Modo Claro:
+Versión de móvil para Android. \n\nModo Claro:
 
 ![Captura de pantalla 2025-05-28 205016](https://github.com/user-attachments/assets/c499f08d-1c98-4ff6-be77-f4dff298c299)
 ![Captura de pantalla 2025-05-28 204728](https://github.com/user-attachments/assets/dfab89c4-7901-4f8c-992c-f92dfb4db95d)
