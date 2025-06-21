@@ -7,11 +7,10 @@ Lenguaje de Programación: **_Java_**
 Entorno de Desarrollo: **_Android Studio_**  
 Patrón de Diseño y Arquitectura: **_MVVM_**  
 
-Diseño de Interfaces: **_Android Nativo_**  
+Diseño de Interfaces: **_Android Nativo_** y **_KalendarView_** 
 Base de Datos: **_SQLite_**  
-APIs RESTful: **_OWM_** (OpenWeatherMap)  
 
-Frameworks: **_KalendarView_**  
+APIs RESTful: **_OWM_** (OpenWeatherMap)    
 Librerías (Mapas y GPS): **_OSMDroid_**  
 
 Librerías (Documentos): **_iTextPDF_**  
