@@ -10,7 +10,7 @@ Patrón de Diseño y Arquitectura: **_MVVM_**
 Diseño de Interfaces: **_Android Nativo_** y **_KalendarView_**  
 Base de Datos: **_SQLite_**  
 
-APIs RESTful: **_OWM_** (OpenWeatherMap)    
+APIs RESTful: **_OWM_**  
 Librerías (Mapas y GPS): **_OSMDroid_**  
 
 Librerías (Documentos): **_iTextPDF_**  
