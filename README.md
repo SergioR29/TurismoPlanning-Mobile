@@ -1,6 +1,15 @@
 # TurismoPlanning-Mobile
 App ideal para turistas y personas que vivan cerca de la provincia de Guadalajara (Castilla-La Mancha, España) y que quieran organizar su día a día con excelencia. Las funcionalidades más destacadas son la exportación de archivos a HTML o PDF, visualización de un mapa con una ubicación (actual o de una ciudad seleccionada) y clima (actual o de una ciudad seleccionada), planificación de visitas de una ciudad o sitio (de una ciudad) seleccionad@ así como de eventos personales agrupados por categorías que el usuario desee crear, un calendario con los eventos del día seleccionado del mes y temas para visualizar la aplicación de la forma más cómoda posible (Claro, Oscuro u Predeterminado por el Sistema).
 
+Tecnologías utilizadas
+-
+Lenguaje de Programación: **_Java_**  
+Entorno de Desarrollo: **_Android Studio_**  
+Patrón de Diseño y Arquitectura: **_MVVM_**  
+
+Diseño de Interfaces: Nativo en el IDE (Android Studio)  
+Base de Datos: **_SQLite_**
+
 Modo Claro
 -
 ![Captura de pantalla 2025-06-17 114723](https://github.com/user-attachments/assets/152a34b9-1e84-4f38-881f-e75e05b6b1ad)
