@@ -11,7 +11,7 @@ Diseño de Interfaces: **_Android Nativo_**
 Base de Datos: **_SQLite_**  
 APIs RESTful: **_OWM_** (OpenWeatherMap)  
 
-Frameworks: **_Android Nativo_** (KalendarView).  
+Frameworks: **_KalendarView_**  
 Librerías (Mapas y GPS): **_OSMDroid_**  
 Librerías (Documentos): **_iTextPDF_**  
 
