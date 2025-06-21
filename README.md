@@ -13,7 +13,9 @@ APIs RESTful: **_OWM_** (OpenWeatherMap)
 
 Frameworks: **_KalendarView_**  
 Librerías (Mapas y GPS): **_OSMDroid_**  
+
 Librerías (Documentos): **_iTextPDF_**  
+Preparación de plantillas HTML y CSS: **_Formateo de strings nativo_**.  
 
 Modo Claro
 -
