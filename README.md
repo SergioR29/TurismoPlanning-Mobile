@@ -7,7 +7,7 @@ Lenguaje de Programación: **_Java_**
 Entorno de Desarrollo: **_Android Studio_**  
 Patrón de Diseño y Arquitectura: **_MVVM_**  
 
-Diseño de Interfaces: Nativo en el IDE (Android Studio)  
+Diseño de Interfaces: **_Android Nativo_**  
 Base de Datos: **_SQLite_**  
 APIs RESTful: **_OWM_** (OpenWeatherMap)  
 
