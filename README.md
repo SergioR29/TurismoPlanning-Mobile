@@ -8,7 +8,12 @@ Entorno de Desarrollo: **_Android Studio_**
 Patrón de Diseño y Arquitectura: **_MVVM_**  
 
 Diseño de Interfaces: Nativo en el IDE (Android Studio)  
-Base de Datos: **_SQLite_**
+Base de Datos: **_SQLite_**  
+APIs RESTful: **_OWM_** (OpenWeatherMap)  
+
+Frameworks: **_Android Nativo_** (Móvil, KalendarView).
+Librerías (Mapas y GPS): **_OSMDroid_**
+Librerías (Documentos): **_iTextPDF_**
 
 Modo Claro
 -
