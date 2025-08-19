@@ -15,7 +15,7 @@ Base de Datos: **_SQLite_**
 APIs RESTful: **_OWM_**  
 Librerías (Mapas y GPS): **_OSMDroid_**  
 
-Librerías (Documentos): **_iTextPDF_**  
+Librerías (Documentos): **_iTextPDF_** (iText7)  
 Preparación de plantillas HTML y CSS: **_Formateo de strings nativo_**.  
 
 Modo Claro
