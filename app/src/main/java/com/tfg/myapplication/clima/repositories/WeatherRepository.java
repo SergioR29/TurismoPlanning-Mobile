@@ -17,7 +17,7 @@ public class WeatherRepository {
 
     private OpenWeatherMapService openWeatherMapService;
     private static final String BASE_URL = "https://api.openweathermap.org/";
-    private static final String API_KEY = "b937163bd93f3119e2ee35427a5d7eb2";
+    private static final String API_KEY = "";
 
     public WeatherRepository() {
         // Configura y crea la instancia de Retrofit
