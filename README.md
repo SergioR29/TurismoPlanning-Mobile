@@ -4,7 +4,9 @@ App ideal para turistas y personas que vivan cerca de la provincia de Guadalajar
 --  
 
 - Metodología de Desarrollo: **_RUP_**  
-- Compatibilidad: Android **8.1** (API 27) y **_superiores_**
+- Compatibilidad: Android **8.1** (API 27) y **_superiores_**  
+
+--
 
 Tecnologías utilizadas
 -
