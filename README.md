@@ -21,10 +21,10 @@ Preparación de plantillas HTML y CSS: **Formateo de strings nativo**.
 
 Modo Claro
 -
-<img src="https://github.com/user-attachments/assets/152a34b9-1e84-4f38-881f-e75e05b6b1ad" width=500 height=500>  
-<img src="https://github.com/user-attachments/assets/dfab89c4-7901-4f8c-992c-f92dfb4db95d" width=500 height=500>  
+<img src="https://github.com/user-attachments/assets/152a34b9-1e84-4f38-881f-e75e05b6b1ad" width=250 height=500>  
+<img src="https://github.com/user-attachments/assets/dfab89c4-7901-4f8c-992c-f92dfb4db95d" width=250 height=500>  
 
 Modo Oscuro
 -
-<img src="https://github.com/user-attachments/assets/43907c79-1d75-40e1-bbb8-53e8b4364c90" width=500 height=500>  
-<img src="https://github.com/user-attachments/assets/33a51885-08f3-4cb3-895b-aecaf21b179c" width=500 height=500> 
+<img src="https://github.com/user-attachments/assets/43907c79-1d75-40e1-bbb8-53e8b4364c90" width=250 height=500>  
+<img src="https://github.com/user-attachments/assets/33a51885-08f3-4cb3-895b-aecaf21b179c" width=250 height=500> 
