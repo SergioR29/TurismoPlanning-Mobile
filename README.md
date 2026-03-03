@@ -26,3 +26,4 @@ Menú Principal
 ---  
 <img src="https://github.com/user-attachments/assets/43907c79-1d75-40e1-bbb8-53e8b4364c90" width=175 height=350>  
 <img src="https://github.com/user-attachments/assets/33a51885-08f3-4cb3-895b-aecaf21b179c" width=175 height=350> 
+---
