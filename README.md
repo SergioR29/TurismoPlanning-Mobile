@@ -13,7 +13,7 @@ Patrón de Diseño y Arquitectura: **MVVM**
 Diseño de Interfaces: **XML**, **MaterialComponents** y **KalendarView**  
 Base de Datos: **SQLite**  
 
-APIs RESTful: **OWM**  
+APIs RESTful: **OWM**, Retrofit  
 Librerías (Mapas y GPS): **OSMDroid**  
 
 Librerías (Documentos): **iTextPDF** (iText7)  
